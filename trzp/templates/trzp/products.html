@@ -1,0 +1,98 @@
+{% extends "trzp/_base.html" %}
+
+{% block content %}
+<section class="max-w-7xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-10">
+        Products
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {% for prods in products %}
+        <a href="{% url 'product-detail' prods.slug %}" class="group">
+            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+
+                <!-- Image -->
+                <div class="relative h-64 overflow-hidden">
+                    {% if prods.image %}
+                        <img
+                            src="{{ prods.image.url }}"
+                            alt="{{ prods.product_name }}"
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                        >
+                    {% else %}  
+                        <div class="flex items-center justify-center h-full bg-gray-100 text-gray-400 italic">
+                            No Image Available
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Content -->
+                <div class="p-5">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-600 transition">
+                        {{ prods.product_name }}
+                    </h2>
+
+                    <p class="text-gray-600 text-sm mb-4">
+                        {{ prods.product_summery }}
+                    </p>
+
+                    <span class="inline-flex items-center text-indigo-600 font-medium">
+                        View product
+                        <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </div>
+
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends "trzp/_base.html" %}
+
+{% block content %}
+<h1>Products</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+
+        {% for prods in products %}
+
+            <a href="#">
+                <div class="relative h-64 w-full bg-gray-200 overflow-hidden">
+                    {% if prods.image %}
+                    <img src="{{ prods.image.url }}" alt="{{ prods.slug }}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    {% else %}
+                    <div class="flex items-center justify-center h-full text-gray-400 italic">
+                        No Image Available
+                    </div>
+                    {% endif %}
+                    
+
+
+                </div>
+
+                    <div class="mb-4">
+                        <h2 class="align-items: center text-2xl font-bold text-gray-900">{{ prods.product_name }}</h2>
+                        <p class="text-gray-600 font-semibold italic">{{ prods.product_summery }}</p>
+                    </div>
+                </div>
+            </a> 
+
+        {% endfor %}   
+    </div>
+
+{% endblock content %} {% endcomment %}

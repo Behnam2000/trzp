@@ -1,0 +1,66 @@
+{% extends "trzp/_base.html" %}
+
+
+
+
+{% block content %}
+    
+    <h1 class="justify-center">Computers</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    
+        {% for comps in object_list %}
+            <div class="bg-white border border-gray-200 rounded-[30px] shadow-lg overflow-hidden flex flex-col p-6 hover:shadow-2xl transition duration-300">
+
+                <div class="relative h-64 w-full bg-gray-200 overflow-hidden">
+                    {% if comps.image %}
+                    <img src="{{ comps.image.url }}" alt="{{ comps.mb }}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    {% else %}
+                    <div class="flex items-center justify-center h-full text-gray-400 italic">
+                        No Image Available
+                    </div>
+                    {% endif %}
+                    
+
+
+                </div>    
+
+                {% comment %} <div class="mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900 uppercase">{{ comps.brand }}</h2>
+                    <p class="text-gray-600 font-semibold italic">{{ comps.laptop_model }}</p>
+                </div> {% endcomment %}
+
+                <div class="space-y-2 text-sm text-gray-600 flex-grow">
+                    <div class="flex justify-between border-b border-gray-50 pb-1">
+                        <span class="font-bold">M/B:</span>
+                        <span>{{ comps.mb }} </span>
+                    </div>
+                
+                    <div class="flex justify-between border-b border-gray-50 pb-1">
+                        <span class="font-bold">CPU:</span>
+                        <span>{{ comps.cpu }} GB</span>
+                    </div>
+                
+                    <div class="flex justify-between border-b border-gray-50 pb-1">
+                        <span class="font-bold">RAM:</span>
+                        <span>{{ comps.ram }}</span>
+                    </div>
+                
+                    <div class="flex justify-between border-b border-gray-50 pb-1">
+                        <span class="font-bold">Price:</span>
+                        <span>{{ gamec.price }} </span>
+                    </div>
+
+                
+                </div>
+
+                <button class="mt-6 w-full bg-gradient-to-r from-[#D786ff] to-[#722cff] text-white py-3 rounded-full font-bold uppercase hover:scale-105 transition transform">
+                    View Details
+                </button>
+
+            </div>
+        {% endfor %}
+    
+    </div>
+    
+
+{% endblock content %}
